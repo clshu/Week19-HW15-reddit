@@ -14,7 +14,8 @@ app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
-mongoose.connect('mongodb://localhost/reddit');
+let MONGODB = process.env.MONGODB_URI || "mongodb://localhost/reddit";
+mongoose.connect(MONGODB);
 
 app.listen(PORT, () => {
 	console.log('server started on port: ', PORT);
