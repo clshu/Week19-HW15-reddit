@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class Main extends Component {
 	render() {
-		console.log("main....");
+		//console.log("main....");
 		return (
 			<div className="container-fluid">
 	      <div className="jumbotron text-center">

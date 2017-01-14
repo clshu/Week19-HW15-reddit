@@ -10,8 +10,23 @@ router.get('/:subreddit', (req, res) => {
 	Post.find({
 		subredditId: subredditId
 	}, (err, results) => {
+		if (err) throw err;
 		res.json(results);
 	});
 });
 
+router.post('/:subreddit/new', (req, res) => {
+	
+	let subredditId = req.params.subreddit.toLowerCase();
+	subredditId = subredditId.replace(/ /g, '');
+	let newPost = Object.assign({}, req.body, {subredditId});
+	
+	Post.create(newPost
+	, (err, results) => {
+		if (err) throw err;
+		res.json(results);
+	});
+
+
+});
 module.exports = router;

@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const app = express();
 
 const posts = require('./api/routes/posts');
@@ -8,6 +9,10 @@ const posts = require('./api/routes/posts');
 const PORT = process.env.PORT || 8888;
 
 app.use(express.static('public'));
+// parse application/x-www-form-urlencoded 
+//app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json 
+app.use(bodyParser.json())
 
 app.use('/posts', posts);
 app.get('*', function (request, response){

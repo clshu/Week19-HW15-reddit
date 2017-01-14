@@ -35,16 +35,10 @@ export default class Listing extends Component {
 		console.log("Listing:render");
 		return (
 				<div className="row">
-					<Post subredditId={this.props.params.subredditId}/>
+					<Post subredditId={this.props.params.subredditId} refreshList={(id) => this.getSubReddit(id)}/>
 					<List subredditId={this.props.params.subredditId} posts={this.state.posts} />
 				</div>
 			
 		);
 	}
 }
-
-/*
-	<ul>
-				{this.state.posts.map(post => <ListItem key={post._id} post={post} />)}
-			</ul>
-			*/

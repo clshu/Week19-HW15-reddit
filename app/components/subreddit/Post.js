@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import axios from 'axios';
+
 // A form to create a new Post
 
 export default class Post extends Component {
@@ -24,15 +26,28 @@ export default class Post extends Component {
   	}
 
   	handleSubmit(event) {
-    	console.log("Submit")
-    	console.log(this.state)
+    	//console.log("Submit")
+    	//console.log(this.state)
    		event.preventDefault();
+   		let postRoute = '/posts/' + this.props.subredditId + '/new';
+   		axios.post(postRoute, this.state)
+   		.then((response) => {
+   			console.log(response);
+        // Success then refresh the list of posts
+        this.props.refreshList(this.props.subredditId);
+   		})
+   		.catch((error) => {
+        console.log(error)
+   			throw error;
+   		}) 
+
    	
    		this.setState({
-   			title: "",
-			content: "",
-			author: ""
+   		 title: "",
+			 content: "",
+			 author: ""
    		})
+    
   	}
 
 	render() {
