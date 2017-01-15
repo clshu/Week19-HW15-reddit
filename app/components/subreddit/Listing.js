@@ -14,21 +14,21 @@ export default class Listing extends Component {
 
 	getSubReddit(subredditId) {
 		axios.get('/posts/' + subredditId).then(posts => {
-
+			console.log(posts.data)
 			this.setState({ posts: posts.data });
 		});
 	}
 
 	componentDidMount() {
-		//console.log("componentDidMount")
+		console.log("componentDidMount")
 		this.getSubReddit(this.props.params.subredditId);
 	}
 	componentWillReceiveProps() {
-		//console.log("componentWillReceiveProps")
+		console.log("componentWillReceiveProps")
 		this.getSubReddit(this.props.params.subredditId);
 	}
 	componentDidUpdate() {
-		//console.log("componentDidUpdate")
+		console.log("componentDidUpdate")
 		//this.getSubReddit(this.props.params.subredditId);
 	}
 

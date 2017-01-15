@@ -10,7 +10,7 @@ export default class ListItem extends Component {
 
 		return (
 			<li className="list-group-item"  onClick={(event) => this.handleClick(event)}>
-				<p><strong>{this.props.post.title}</strong></p>
+				<p>{this.props.post.date}: <strong>{this.props.post.title}</strong></p>
 			</li>
 		);
 	}

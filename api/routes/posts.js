@@ -10,7 +10,10 @@ router.get('/:subreddit', (req, res) => {
 
 	Post.find({
 		subredditId: subredditId
-	}, (err, results) => {
+	}).
+	sort({date: -1}).
+	select({ _id: 1, title: 1, date: 1}).
+	exec((err, results) => {
 		if (err) throw err;
 		res.json(results);
 	});
