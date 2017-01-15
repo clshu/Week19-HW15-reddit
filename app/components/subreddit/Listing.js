@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import List from './List';
-import Post from './Post';
 
 export default class Listing extends Component {
 	constructor() {
@@ -15,28 +14,33 @@ export default class Listing extends Component {
 
 	getSubReddit(subredditId) {
 		axios.get('/posts/' + subredditId).then(posts => {
-			console.log("posts")
-			console.log(posts)
+
 			this.setState({ posts: posts.data });
 		});
 	}
 
 	componentDidMount() {
-		console.log("componentDidMount")
+		//console.log("componentDidMount")
 		this.getSubReddit(this.props.params.subredditId);
 	}
-
+	componentWillReceiveProps() {
+		//console.log("componentWillReceiveProps")
+		this.getSubReddit(this.props.params.subredditId);
+	}
 	componentDidUpdate() {
 		//console.log("componentDidUpdate")
 		//this.getSubReddit(this.props.params.subredditId);
 	}
 
 	render() {
-		console.log("Listing:render");
+	
 		return (
-				<div className="row">
-					<Post subredditId={this.props.params.subredditId} refreshList={(id) => this.getSubReddit(id)}/>
+				<div className="row">	
+			
 					<List subredditId={this.props.params.subredditId} posts={this.state.posts} />
+
+					{/* This code will dump the correct Child Component */}
+	        		{this.props.children}
 				</div>
 			
 		);

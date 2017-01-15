@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
+
 import ListItem from './ListItem';
 
 export default class List extends Component {
 	constructor(props) {
 		super(props);
-		//console.log("constructor List")
+	
+	}
+	handleButtonClick(event) {
+		if (!this.props.subredditId) {
+			return;
+		}
+		browserHistory.push(`/${this.props.subredditId}/new`);
 	}
 
 	render() {
-		console.log("List:props")
-		console.log(this.props)
+		
 		return (
-			<div className="col-sm-9">
+			<div className="col-sm-8">
 				
-				<h2>Subreddit: {this.props.subredditId}</h2>
-				
+				<h3>Subreddit: {this.props.subredditId}</h3>
+				<button className="btn btn-primary" type="button" onClick={(event) => this.handleButtonClick(event)}>Create A New Post</button>
 				<ul className="list-group">
 					{this.props.posts.map(post => <ListItem key={post._id} post={post} />)}
 				</ul>

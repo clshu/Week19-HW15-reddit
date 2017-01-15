@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 import axios from 'axios';
 
@@ -17,24 +18,22 @@ export default class Post extends Component {
 
 	handleTitleChange(event) {
    		this.setState({title: event.target.value});
-  	}
-  	handleContentChange(event) {
+  }
+  handleContentChange(event) {
    		this.setState({content: event.target.value});
-  	}
-  	handleAuthorChange(event) {
+  }
+  handleAuthorChange(event) {
    		this.setState({author: event.target.value});
-  	}
+  }
 
-  	handleSubmit(event) {
-    	//console.log("Submit")
-    	//console.log(this.state)
+  handleSubmit(event) {
    		event.preventDefault();
-   		let postRoute = '/posts/' + this.props.subredditId + '/new';
+   		let postRoute = '/posts/' + this.props.params.subredditId + '/new';
    		axios.post(postRoute, this.state)
    		.then((response) => {
-   			console.log(response);
-        // Success then refresh the list of posts
-        this.props.refreshList(this.props.subredditId);
+        // Success then refresh the list of posts by
+        // changing route to /:subredditId
+        browserHistory.push('/' + this.props.params.subredditId);
    		})
    		.catch((error) => {
         console.log(error)
@@ -48,11 +47,12 @@ export default class Post extends Component {
 			 author: ""
    		})
     
-  	}
+  }
 
 	render() {
 		return (
 			<div className="col-sm-3">
+        <h3>Create A New Post</h3>
 				<form onSubmit={(event) => this.handleSubmit(event)}>
   					<div className="form-group">
    						<label htmlFor="title">Title</label>
