@@ -12,7 +12,7 @@ router.get('/:subreddit', (req, res) => {
 		subredditId: subredditId
 	}).
 	sort({date: -1}).
-	select({ _id: 1, title: 1, date: 1}).
+	select({ _id: 1, title: 1, date: 1, subredditId: 1 }).
 	exec((err, results) => {
 		if (err) throw err;
 		res.json(results);

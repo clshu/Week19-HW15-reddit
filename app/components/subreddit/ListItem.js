@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { browserHistory} from 'react-router';
 
 export default class ListItem extends Component {
 
 	handleClick(event) {
-
-		console.log(this.props.post);
+		let reactPath = '/' + this.props.post.subredditId + '/' + this.props.post._id;
+		browserHistory.push(reactPath);
 	}
 	render() {
 

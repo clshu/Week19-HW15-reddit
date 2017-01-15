@@ -14,7 +14,7 @@ export default class Listing extends Component {
 
 	getSubReddit(subredditId) {
 		axios.get('/posts/' + subredditId).then(posts => {
-			console.log(posts.data)
+			//console.log(posts.data)
 			this.setState({ posts: posts.data });
 		});
 	}
