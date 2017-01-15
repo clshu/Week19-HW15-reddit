@@ -28,7 +28,7 @@ export default class Post extends Component {
 
   handleSubmit(event) {
    		event.preventDefault();
-   		let postRoute = '/posts/' + this.props.params.subredditId + '/new';
+   		let postRoute = '/posts/' + this.props.params.subredditId;
    		axios.post(postRoute, this.state)
    		.then((response) => {
         // Success then refresh the list of posts by

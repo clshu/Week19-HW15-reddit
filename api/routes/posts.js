@@ -19,7 +19,7 @@ router.get('/:subreddit', (req, res) => {
 	});
 });
 
-router.post('/:subreddit/new', (req, res) => {
+router.post('/:subreddit', (req, res) => {
 	//console.log(req.originalUrl);
 	let subredditId = req.params.subreddit.toLowerCase();
 	subredditId = subredditId.replace(/ /g, '');
