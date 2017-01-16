@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
+
 import axios from 'axios';
  
 
@@ -15,18 +17,21 @@ export default class ShowPost extends Component {
 	}
 	handleSubmit(event) { 
 		event.preventDefault();
+
+		console.log("Comment: handleSubmit: " + this.state.comment);
    		let postRoute = '/posts/' + this.props.params.post_id;
    		axios.put(postRoute, this.state)
    		.then((response) => {
-   		})
+   			console.log(response);
+   		
         // Success then refresh the list of posts by
         // changing route to /:subredditId/:post_id
-        /*
-        browserHistory.push('/' + this.props.params.subredditId);
+        
+        browserHistory.push('/' + this.props.params.subredditId + '/' + this.props.params.post_id);
    		})
-   		*/
+   		
    		.catch((error) => {
-        console.log(error)
+       		console.log(error)
    			throw error;
    		}) 
     
@@ -37,10 +42,11 @@ export default class ShowPost extends Component {
 				<form onSubmit={(event) => this.handleSubmit(event)}>
   					<div className="form-group">
     					<label htmlFor="new-comment">New Comment</label>
-    					<textarea className="form-control" rows="10" value={this.state.comment} onChange={(event) => this.handleCommentChange(event)} ></textarea>
+    					<textarea className="form-control" rows="10" value={this.state.comment} onChange={(event) => this.handleCommentChange(event)} required></textarea>
   					</div>
+  					<button type="submit" className="btn btn-primary">Submit</button>
 				</form>
-				<button type="submit" className="btn btn-primary" >Submit</button>
+	
 			</div>
 			);
 	}

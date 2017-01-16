@@ -40,13 +40,13 @@ export default class Post extends Component {
    			throw error;
    		}) 
 
-   	
+   	/*
    		this.setState({
    		 title: "",
 			 content: "",
 			 author: ""
    		})
-    
+    */
   }
 
 	render() {
@@ -56,15 +56,15 @@ export default class Post extends Component {
 				<form onSubmit={(event) => this.handleSubmit(event)}>
   					<div className="form-group">
    						<label htmlFor="title">Title</label>
-   						<input value={this.state.title} onChange={(event) => this.handleTitleChange(event)} type="text" className="form-control" id="title" placeholder="Title" />
+   						<input value={this.state.title} onChange={(event) => this.handleTitleChange(event)} type="text" className="form-control" id="title" placeholder="Title" required />
   					</div>
   					<div className="form-group">
    						<label htmlFor="content">Content</label>
-    					<input value={this.state.content} onChange={(event) => this.handleContentChange(event)} type="text" className="form-control" id="content" placeholder="Content" />
+    					<input value={this.state.content} onChange={(event) => this.handleContentChange(event)} type="text" className="form-control" id="content" placeholder="Content" required />
   					</div>
   					<div className="form-group">
    						<label htmlFor="author">Author</label>
-    					<input value={this.state.author} onChange={(event) => this.handleAuthorChange(event)} type="text" className="form-control" id="author" placeholder="Author" />
+    					<input value={this.state.author} onChange={(event) => this.handleAuthorChange(event)} type="text" className="form-control" id="author" placeholder="Author" required />
   					</div>
   
  					<button type="submit" className="btn btn-primary">Submit</button>
