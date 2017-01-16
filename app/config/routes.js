@@ -11,9 +11,9 @@ module.exports = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
 			<Route path="/:subredditId" component={Listing} >
-				<Route path="/:subredditId/new" component={Post} />
-				<Route path="/:subredditId/:post_id" component={ShowPost} />
-				<Route path="/:subredditId/:post_id/comment" component={Comment} />
+				<Route path="new" component={Post} />
+				<Route path=":post_id" component={ShowPost} />
+				<Route path=":post_id/comment" component={Comment} />
 			</Route>
 			<IndexRoute component={Listing} />
     </Route>
