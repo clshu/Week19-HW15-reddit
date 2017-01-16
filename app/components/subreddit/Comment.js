@@ -18,7 +18,7 @@ export default class ShowPost extends Component {
 	handleSubmit(event) { 
 		event.preventDefault();
 
-		console.log("Comment: handleSubmit: " + this.state.comment);
+		// Add a new comment
    		let postRoute = '/posts/' + this.props.params.post_id;
    		axios.put(postRoute, this.state)
    		.then((response) => {
@@ -26,7 +26,7 @@ export default class ShowPost extends Component {
    		
         // Success then refresh the list of posts by
         // changing route to /:subredditId/:post_id
-        
+        // to load <ShowPost />
         browserHistory.push('/' + this.props.params.subredditId + '/' + this.props.params.post_id);
    		})
    		

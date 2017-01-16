@@ -6,7 +6,7 @@ export default class Main extends Component {
 		return (
 			<div className="container-fluid">
 	      <div className="jumbotron text-center">
-	        <h2><strong>Reddit!</strong></h2>
+	        <h2><strong>Reddit! React</strong></h2>
 	      </div>
 
 	      

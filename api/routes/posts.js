@@ -8,7 +8,8 @@ router.get('/:subreddit', (req, res) => {
 
 	let subredditId = req.params.subreddit.toLowerCase();
 	subredditId = subredditId.replace(/ /g, '');
-	// sort in descending order of date to show the last entry first
+	// get all posts of the same subredditId
+	// sort it in descending order of date to show the last entry first
 	Post.find({
 		subredditId: subredditId
 	}).
@@ -26,7 +27,7 @@ router.post('/:subreddit', (req, res) => {
 	let subredditId = req.params.subreddit.toLowerCase();
 	subredditId = subredditId.replace(/ /g, '');
 	let newPost = Object.assign({}, req.body, {subredditId});
-	
+	// Add a new post
 	Post.create(newPost
 	, (err, results) => {
 		if (err) throw err;
@@ -40,7 +41,7 @@ router.post('/:subreddit', (req, res) => {
 // Can't use  /posts/:post_id because it will be mistaken
 // as /posts/:subreddit due to the same path structure
 router.get('/post_id/:post_id', (req, res) => {
-	
+	// Get a post by its _id
 	Post.findById(req.params.post_id,
 		(err, results) => {
 			if (err) throw err;
@@ -51,7 +52,7 @@ router.get('/post_id/:post_id', (req, res) => {
 
 // PUT /posts/:post_id
 router.put('/:post_id', (req, res) => {
-
+	// Add a new comment to an existing post
 	Post.findOneAndUpdate({ _id: req.params.post_id },
 		{$push: {comments: req.body.comment}},
 		(err, results) => {

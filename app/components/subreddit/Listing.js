@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import List from './List';
 
+// This class the container of a list of posts
+// which holds the state of the posts
 export default class Listing extends Component {
 	constructor() {
 		super();

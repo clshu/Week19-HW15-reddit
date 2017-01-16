@@ -8,7 +8,7 @@ import axios from 'axios';
 export default class Post extends Component {
 	constructor(props) {
 		super(props);
-		//console.log("constructor Post")
+	
 		this.state = {
 			title: "",
 			content: "",
@@ -29,10 +29,12 @@ export default class Post extends Component {
   handleSubmit(event) {
    		event.preventDefault();
    		let postRoute = '/posts/' + this.props.params.subredditId;
+      // Add a new post
    		axios.post(postRoute, this.state)
    		.then((response) => {
         // Success then refresh the list of posts by
         // changing route to /:subredditId
+        // to load <Listing />
         browserHistory.push('/' + this.props.params.subredditId);
    		})
    		.catch((error) => {
@@ -40,13 +42,6 @@ export default class Post extends Component {
    			throw error;
    		}) 
 
-   	/*
-   		this.setState({
-   		 title: "",
-			 content: "",
-			 author: ""
-   		})
-    */
   }
 
 	render() {

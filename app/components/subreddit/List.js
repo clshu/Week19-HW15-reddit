@@ -3,6 +3,9 @@ import { browserHistory } from 'react-router';
 
 import ListItem from './ListItem';
 
+// This class holds and show a list of posts
+// if it's clicked then show the details of the post by switching
+// route to /:subredditId/new
 export default class List extends Component {
 	constructor(props) {
 		super(props);
@@ -12,6 +15,7 @@ export default class List extends Component {
 		if (!this.props.subredditId) {
 			return;
 		}
+		// Change route to /:subredditId/new to add a new post
 		browserHistory.push(`/${this.props.subredditId}/new`);
 	}
 

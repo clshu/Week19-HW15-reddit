@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { browserHistory} from 'react-router';
 
+// The single line item of the list in <List />
+// when clicked, it changes route to /:subredditId/:post._id
+// to load <ShowPost />
 export default class ListItem extends Component {
 
 	handleClick(event) {
