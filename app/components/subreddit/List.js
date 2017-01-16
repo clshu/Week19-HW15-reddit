@@ -18,7 +18,7 @@ export default class List extends Component {
 	render() {
 		
 		return (
-			<div className="col-sm-8">
+			<div className="col-sm-6">
 				
 				<h3>Subreddit: {this.props.subredditId}</h3>
 				<button className="btn btn-primary" type="button" onClick={(event) => this.handleButtonClick(event)}>Create A New Post</button>

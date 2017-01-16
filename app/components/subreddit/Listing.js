@@ -6,7 +6,7 @@ import List from './List';
 export default class Listing extends Component {
 	constructor() {
 		super();
-		//console.log("constructor Listing")
+		console.log("Listing: constructor")
 		this.state = {
 			posts: []
 		}
@@ -18,22 +18,32 @@ export default class Listing extends Component {
 			this.setState({ posts: posts.data });
 		});
 	}
-
+	componentWillMount() {
+		console.log("Listing: componentWillMount")
+	}
 	componentDidMount() {
-		console.log("componentDidMount")
+		console.log("Listing: componentDidMount")
 		this.getSubReddit(this.props.params.subredditId);
 	}
-	componentWillReceiveProps() {
-		console.log("componentWillReceiveProps")
+	componentWillReceiveProps(nextProps) {
+		console.log("Listing: componentWillReceiveProps")
+		console.log("Listing: nextProps:subredditId " + nextProps.params.subredditId);
+		console.log("Listing: this.Props:subredditId " + this.props.params.subredditId);
 		this.getSubReddit(this.props.params.subredditId);
 	}
 	componentDidUpdate() {
-		console.log("componentDidUpdate")
+		console.log("Listing: componentDidUpdate")
 		//this.getSubReddit(this.props.params.subredditId);
 	}
-
+	componentWillUpdate() {
+		console.log("Listing: componentWillUpdate")
+	}
+	componentWillUnmount() {
+		console.log("Listing: componentWillUnmount")
+	}
 	render() {
-	
+
+		console.log("Listing: render")
 		return (
 				<div className="row">	
 			

@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+//  Get rid off "mongoose mpromise deprecated" message by assign it to ES6 Promise
+mongoose.Promise = Promise;
 const bodyParser = require('body-parser');
 const app = express();
 

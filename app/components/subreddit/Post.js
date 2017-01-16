@@ -51,7 +51,7 @@ export default class Post extends Component {
 
 	render() {
 		return (
-			<div className="col-sm-3">
+			<div className="col-sm-6">
         <h3>Create A New Post</h3>
 				<form onSubmit={(event) => this.handleSubmit(event)}>
   					<div className="form-group">

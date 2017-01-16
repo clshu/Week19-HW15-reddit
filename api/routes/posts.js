@@ -3,8 +3,9 @@ const router = express.Router();
 
 const Post = require('../models/post');
 
+// GET /posts/:subreddit
 router.get('/:subreddit', (req, res) => {
-	//console.log(req.originalUrl);
+	//console.log("GET /posts/:subreddit : " + req.originalUrl);
 	let subredditId = req.params.subreddit.toLowerCase();
 	subredditId = subredditId.replace(/ /g, '');
 
@@ -19,6 +20,7 @@ router.get('/:subreddit', (req, res) => {
 	});
 });
 
+// POST /posts/:subreddit
 router.post('/:subreddit', (req, res) => {
 	//console.log(req.originalUrl);
 	let subredditId = req.params.subreddit.toLowerCase();
@@ -32,5 +34,32 @@ router.post('/:subreddit', (req, res) => {
 	});
 
 
+});
+
+// GET /posts/post_id/:post_id
+// Can't use  /posts/:post_id because it will be mistaken
+// as /posts/:subreddit due to the same path structure
+router.get('/post_id/:post_id', (req, res) => {
+	
+	Post.findById(req.params.post_id,
+		(err, results) => {
+			if (err) throw err;
+			res.json(results);
+		}
+	);
+});
+// PUT /posts/:post_id
+router.put('/:post_id', (req, res) => {
+	console.log(req.body);
+/*
+	Post.findOneAndUpdate({ _id: req.params.post_id },
+		{$push: {}}
+		(err, results) => {
+			if (err) throw err;
+			res.json(results);
+		}
+	);
+*/
+	res.json(req.body);
 });
 module.exports = router;
