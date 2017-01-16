@@ -22,7 +22,7 @@ export default class ShowPost extends Component {
    		let postRoute = '/posts/' + this.props.params.post_id;
    		axios.put(postRoute, this.state)
    		.then((response) => {
-   			console.log(response);
+   			//console.log(response);
    		
         // Success then refresh the list of posts by
         // changing route to /:subredditId/:post_id

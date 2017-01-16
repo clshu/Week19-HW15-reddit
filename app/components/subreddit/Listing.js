@@ -26,8 +26,15 @@ export default class Listing extends Component {
 		this.getSubReddit(this.props.params.subredditId);
 	}
 	componentWillReceiveProps(nextProps) {
+		console.log("Listing:nextProps: " + nextProps.params.subredditId);
+		console.log("Listing:this.props: " + this.props.params.subredditId);
 
-		this.getSubReddit(this.props.params.subredditId);
+		if (this.props === nextProps) {
+			return;
+		} else {
+			this.props = nextProps;
+			this.getSubReddit(this.props.params.subredditId);
+		}
 	}
 
 	render() {
