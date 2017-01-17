@@ -8,7 +8,7 @@ import List from './List';
 export default class Listing extends Component {
 	constructor() {
 		super();
-		console.log("Listing: constructor")
+		//console.log("Listing: constructor")
 		this.state = {
 			posts: []
 		}
@@ -23,11 +23,15 @@ export default class Listing extends Component {
 
 	componentDidMount() {
 		//console.log("Listing: componentDidMount")
+		if (!this.props.params.subredditId) {
+			// Default "Austin" when the page just loaded
+			this.props.params.subredditId = "Austin";
+		}
 		this.getSubReddit(this.props.params.subredditId);
 	}
 	componentWillReceiveProps(nextProps) {
-		console.log("Listing:nextProps: " + nextProps.params.subredditId);
-		console.log("Listing:this.props: " + this.props.params.subredditId);
+		//console.log("Listing:nextProps: " + nextProps.params.subredditId);
+		//console.log("Listing:this.props: " + this.props.params.subredditId);
 
 		if (this.props === nextProps) {
 			return;
@@ -39,7 +43,7 @@ export default class Listing extends Component {
 
 	render() {
 
-		console.log("Listing: render")
+		//console.log("Listing: render")
 		return (
 				<div className="row">	
 			

@@ -46,11 +46,12 @@ export default class ShowPost extends Component {
 			this.getPost(this.props.params.post_id);
 		}
 	}
-	
+
 	handleClick() {
 		let reactRoute = '/' + this.props.params.subredditId + '/' + this.props.params.post_id + '/comment';
 		browserHistory.push(reactRoute);
 	}
+
 	render() {
 		console.log("ShowPost: render")
 		// reverse order to show the latest first
@@ -58,6 +59,7 @@ export default class ShowPost extends Component {
 			this.state.comments.reverse().map((comment, index) => {
 				return <p key={index}>- {comment}</p>;
 			})
+		
 		return (
 			<div className="col-sm-6">
 				<div className="show-post">
@@ -78,7 +80,9 @@ export default class ShowPost extends Component {
 					<div className="well">
 						{comments}
 					</div>
+					
 					<input className="btn btn-primary" type="button" onClick={(event) => this.handleClick(event)} value="Add a New Comment" />
+					
 				</div>
 			</div>
 			)
