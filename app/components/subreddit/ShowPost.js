@@ -53,7 +53,7 @@ export default class ShowPost extends Component {
 	}
 
 	render() {
-		console.log("ShowPost: render")
+		//console.log("ShowPost: render")
 		// reverse order to show the latest first
 		let comments =
 			this.state.comments.reverse().map((comment, index) => {
